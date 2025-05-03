@@ -36,13 +36,13 @@ def bin_counter(rounded_dbp, MSNA, nerve_on, bin_width=1):
     beat_range = int(max_bp - min_bp) + 1
     n_beats = np.zeros(beat_range, dtype=float)  # need to divide by bin_width
     bp = np.zeros(beat_range, dtype=float)
-    current_bin = min_bp
+    current_bin = min_bp + bin_width
     bp_cntr = 0
     nerve_cntr = 0
     k = 0
     i = 0
     while k < len(rounded_dbp):
-        if rounded_dbp[k] == current_bin:
+        if rounded_dbp[k] < current_bin:
             bp_cntr += 1
             if nerve_on[k]:
                 nerve_cntr += 1
