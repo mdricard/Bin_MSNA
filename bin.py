@@ -30,6 +30,13 @@ def get_max(curve, first_pt, last_pt):
             max_val = curve[i]
     return max_val
 
+def plot_msna_dbp(rounded_dbp, MSNA):
+    plt.scatter(rounded_dbp, MSNA, color='r')
+    plt.xlabel('Diastolic')
+    plt.ylabel('MSNA')
+    plt.grid(True)
+    plt.show()
+
 def bin_counter(rounded_dbp, MSNA, nerve_on, bin_width=1):
     max_bp = rounded_dbp[len(rounded_dbp) - 1]
     min_bp = rounded_dbp[0]
@@ -91,7 +98,7 @@ nerve_on = nerve_on[ind]
 #rint('after_sort')
 rounded_dbp = np.round(dbp)
 n_beats, bp = bin_counter(rounded_dbp, MSNA, nerve_on, bin_width=1)
-print(n_beats)
+plot_msna_dbp(rounded_dbp, MSNA)
 """
 for i in range(25):
     print(i, rounded_dbp[i], MSNA[i], nerve_on[i])
